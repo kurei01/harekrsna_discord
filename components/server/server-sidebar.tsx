@@ -11,6 +11,7 @@ import { ServerHeader } from "./server-header";
 import { ServerSearch } from "./server-search";
 import { ServerSection } from "./server-section";
 import { ServerChannel } from "./server-channel";
+import { ServerMember } from "./server-member";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -129,10 +130,63 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               role={role}
               sectionType="channels"
               channelType={ChannelType.TEXT}
-              server={server}
             />
             {textChannels.map((channel) => (
-              <ServerChannel key={channel.id} channel={channel} role={role} server={server} />
+              <ServerChannel
+                key={channel.id}
+                channel={channel}
+                role={role}
+                server={server}
+              />
+            ))}
+          </div>
+        )}
+        {!!audioChannels?.length && (
+          <div className="mb-2">
+            <ServerSection
+              label="Voice Channels"
+              role={role}
+              sectionType="channels"
+              channelType={ChannelType.AUDIO}
+            />
+            {audioChannels.map((channel) => (
+              <ServerChannel
+                key={channel.id}
+                channel={channel}
+                role={role}
+                server={server}
+              />
+            ))}
+          </div>
+        )}
+        {!!videoChannels?.length && (
+          <div className="mb-2">
+            <ServerSection
+              label="Video Channels"
+              role={role}
+              sectionType="channels"
+              channelType={ChannelType.VIDEO}
+            />
+            {videoChannels.map((channel) => (
+              <ServerChannel
+                key={channel.id}
+                channel={channel}
+                role={role}
+                server={server}
+              />
+            ))}
+          </div>
+        )}
+        {!!members?.length && (
+          <div className="mb-2">
+            <ServerSection
+              label=" Members"
+              role={role}
+              sectionType="members"
+              server={server}
+            />
+            {members.map((member) => (
+              <ServerMember key={member.id} />
             ))}
           </div>
         )}
