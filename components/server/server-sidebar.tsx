@@ -131,14 +131,16 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               sectionType="channels"
               channelType={ChannelType.TEXT}
             />
-            {textChannels.map((channel) => (
-              <ServerChannel
-                key={channel.id}
-                channel={channel}
-                role={role}
-                server={server}
-              />
-            ))}
+            <div className="space-y-[2px]">
+              {textChannels.map((channel) => (
+                <ServerChannel
+                  key={channel.id}
+                  channel={channel}
+                  role={role}
+                  server={server}
+                />
+              ))}
+            </div>
           </div>
         )}
         {!!audioChannels?.length && (
@@ -149,14 +151,16 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               sectionType="channels"
               channelType={ChannelType.AUDIO}
             />
-            {audioChannels.map((channel) => (
-              <ServerChannel
-                key={channel.id}
-                channel={channel}
-                role={role}
-                server={server}
-              />
-            ))}
+            <div className="space-y-[2px]">
+              {audioChannels.map((channel) => (
+                <ServerChannel
+                  key={channel.id}
+                  channel={channel}
+                  role={role}
+                  server={server}
+                />
+              ))}
+            </div>
           </div>
         )}
         {!!videoChannels?.length && (
@@ -167,14 +171,16 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               sectionType="channels"
               channelType={ChannelType.VIDEO}
             />
-            {videoChannels.map((channel) => (
-              <ServerChannel
-                key={channel.id}
-                channel={channel}
-                role={role}
-                server={server}
-              />
-            ))}
+            <div className="space-y-[2px]">
+              {videoChannels.map((channel) => (
+                <ServerChannel
+                  key={channel.id}
+                  channel={channel}
+                  role={role}
+                  server={server}
+                />
+              ))}
+            </div>
           </div>
         )}
         {!!members?.length && (
@@ -185,9 +191,11 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               sectionType="members"
               server={server}
             />
-            {members.map((member) => (
-              <ServerMember key={member.id} />
-            ))}
+            <div className="space-y-[2px]">
+              {members.map((member) => (
+                <ServerMember key={member.id} />
+              ))}
+            </div>
           </div>
         )}
       </ScrollArea>
