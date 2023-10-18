@@ -53,11 +53,14 @@ export const MessageFileModal = () => {
         url: apiUrl || "",
         query,
       });
-      await axios.post(url, { ...values, content: values.fileUrl });
 
-      form.reset();
+      await axios.post(url, {
+        ...values,
+        content: values.fileUrl,
+      });
+
       router.refresh();
-      onClose();
+      handleClose();
     } catch (error) {
       console.log(error);
     }
